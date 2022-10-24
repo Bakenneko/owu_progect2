@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
-import {Modal,} from "react-bootstrap";
+import {Modal,Button} from "react-bootstrap";
 import {API_IMG} from "./urls";
+
 
 
 const Moviebox = ({title, poster_path, vote_average, release_date, overview}) => {
@@ -17,17 +18,20 @@ const Moviebox = ({title, poster_path, vote_average, release_date, overview}) =>
                     <button type="button" className="btn btn-dark" onClick={handleShow}>Детальніше</button>
                     <Modal show={show} onHide={handleClose}>
                         <Modal.Header closeButton>
-                            <Modal.Title></Modal.Title>
+                            <Modal.Title>Опис фільму</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <img className="card-img-top" src={API_IMG + poster_path}/>
+                            <img className="card-img-top" style={{width:'14rem'}} src={API_IMG + poster_path}/>
                             <h3>{title}</h3>
-                            <h4>ImDb: {vote_average}</h4>
+                            <h4>Оцінка: {vote_average}</h4>
                             <h5>Дата релізу: {release_date}</h5>
-                            <br> </br>
+                            <br></br>
                             <h6>Огляд</h6>
                             <p>{overview}</p>
                         </Modal.Body>
+                        <Modal.Footer>
+                            <Button varient="secondary" onClick={handleClose}>Закрити</Button>
+                        </Modal.Footer>
                     </Modal>
                 </div>
             </div>
@@ -35,4 +39,4 @@ const Moviebox = ({title, poster_path, vote_average, release_date, overview}) =>
     )
 }
 
-export {Moviebox};
+export  {Moviebox} ;
